@@ -7,7 +7,7 @@ end
 
 gem 'doorkeeper'
 gem 'foreigner'
-gem 'ominauth-facebook'
+gem 'omniauth-facebook'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.3'
