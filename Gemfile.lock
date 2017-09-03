@@ -63,8 +63,6 @@ GEM
     concurrent-ruby (1.0.5)
     debug_inspector (0.0.3)
     diff-lcs (1.3)
-    doorkeeper (4.2.6)
-      railties (>= 4.2)
     erubi (1.6.1)
     execjs (2.7.0)
     faraday (0.12.2)
@@ -216,7 +214,6 @@ DEPENDENCIES
   binding_of_caller
   byebug
   capybara (~> 2.13)
-  doorkeeper
   foreigner
   listen (>= 3.0.5, < 3.2)
   omniauth-facebook
