@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'foreigner'
+gem 'jwt'
 gem 'omniauth-facebook'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
