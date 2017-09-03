@@ -6,6 +6,7 @@ This is the backend for BADGER! mobile app. Badger allows you to create groups, 
 
 - Ruby 2.4.1 (rbenv or similar recommended)
 - Postgresql
+- Obtain `config/secrets.yml.key`
 
 ## License
 
