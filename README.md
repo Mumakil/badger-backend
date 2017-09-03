@@ -1,24 +1,12 @@
-# README
+# BADGER! backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the backend for BADGER! mobile app. Badger allows you to create groups, create badges within those groups and grant them to other members.
 
-Things you may want to cover:
+## Dependencies
 
-* Ruby version
+- Ruby 2.4.1 (rbenv or similar recommended)
+- Postgresql
 
-* System dependencies
+## License
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+MIT © 2017 Otto Vehviläinen. See LICENSE for details.
