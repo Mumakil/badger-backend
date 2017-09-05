@@ -5,8 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'faraday'
+gem 'faraday_middleware'
 gem 'jwt'
-gem 'omniauth-facebook'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.3'
@@ -19,6 +20,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
+  gem 'webmock'
 end
 
 group :development do
