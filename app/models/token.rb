@@ -28,7 +28,7 @@ class Token
   end
 
   def self.decode(token)
-    data, _ = JWT.decode(
+    data = JWT.decode(
       token,
       secret,
       true,

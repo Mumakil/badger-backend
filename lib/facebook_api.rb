@@ -2,6 +2,7 @@ require 'faraday_middleware'
 
 class FacebookAPI
   API_ENDPOINT = 'https://graph.facebook.com'.freeze
+  PICTURE_TYPE = 'normal'.freeze
 
   class Error < RuntimeError; end
   class ApiError < Error; end
@@ -21,6 +22,10 @@ class FacebookAPI
     res.body
   rescue Faraday::Error => e
     raise ConnectionError, e
+  end
+
+  def self.avatar_url(id)
+    "https://graph.facebook.com/#{id}/picture?type=#{PICTURE_TYPE}"
   end
 
   private
