@@ -3,7 +3,9 @@ require 'jwt'
 class Token
   class InvalidToken < RuntimeError; end
 
-  HMAC_ALGORITHM = 'HS256'.freeze
+  class_attribute :rsa_key
+
+  RSA_ALGORITHM = 'RS512'.freeze
 
   def initialize(options)
     @user = options[:user]
@@ -24,15 +26,15 @@ class Token
   end
 
   def encode
-    JWT.encode payload, self.class.secret, HMAC_ALGORITHM
+    JWT.encode payload, self.class.private_key, RSA_ALGORITHM
   end
 
   def self.decode(token)
     data, = JWT.decode(
       token,
-      secret,
+      public_key,
       true,
-      algorithm: HMAC_ALGORITHM,
+      algorithm: RSA_ALGORITHM,
       verify_iat: true,
       verify_sub: true
     )
@@ -41,7 +43,11 @@ class Token
     raise InvalidToken, e
   end
 
-  def self.secret
-    Rails.application.secrets.secret_key_base
+  def self.private_key
+    rsa_key
+  end
+
+  def self.public_key
+    rsa_key.public_key
   end
 end
