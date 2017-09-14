@@ -9,11 +9,13 @@ RSpec.describe AuthService, type: :model do
     subject { AuthService.new(authenticator, user_creator, token_creator) }
 
     let(:access_token) { SecureRandom.urlsafe_base64 }
-    let(:user_data) { {
-      fbid: generate(:fbid),
-      name: generate(:user_name),
-      avatar_url: generate(:avatar_url)
-    } }
+    let(:user_data) do
+      {
+        fbid: generate(:fbid),
+        name: generate(:user_name),
+        avatar_url: generate(:avatar_url)
+      }
+    end
     let(:user) { User.create!(user_data) }
     let(:token) { Token.new(user: user)}
 

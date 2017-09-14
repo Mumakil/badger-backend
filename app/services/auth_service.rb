@@ -31,7 +31,7 @@ class AuthService
     ServiceResult.new(success: true, token: token)
   rescue AuthenticationFailed => e
     ServiceResult.new(success: false, error: e, status_hint: 400)
-  rescue ActiveRecord::ValidationError => e
+  rescue ActiveRecord::RecordInvalid => e
     ServiceResult.new(success: false, error: e, status_hint: 400)
   rescue RuntimeError => e
     ServiceResult.new(success: false, error: e)
