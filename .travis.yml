@@ -5,6 +5,7 @@ services:
   - postgresql
 notifications:
   email: false
+cache: bundler
 before_script:
   - bin/rails db:create
 script:
