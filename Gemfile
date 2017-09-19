@@ -24,6 +24,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.6'
+  gem 'rubocop'
   gem 'selenium-webdriver'
   gem 'webmock'
 end
