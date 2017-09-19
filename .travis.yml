@@ -1,7 +1,10 @@
 language: ruby
 rvm:
   - 2.4.2
-email: false
+services:
+  - postgresql
+notifications:
+  email: false
 script:
   - bin/rspec
   - bin/rubocop
