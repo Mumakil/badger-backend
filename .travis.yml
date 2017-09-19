@@ -1,4 +1,7 @@
 language: ruby
+rvm:
+  - 2.4.2
+email: false
 script:
   - bin/rspec
   - bin/rubocop
