@@ -9,9 +9,7 @@ module Authentication
 
   def current_user
     @current_user ||= begin
-      unless access_token.nil?
-        access_token.user
-      end
+      access_token.try(:user)
     end
   end
 

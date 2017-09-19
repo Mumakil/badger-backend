@@ -16,9 +16,9 @@ RSpec.describe Authentication, type: :controller do
   let(:access_token) { Token.new(user: user).encode }
 
   it 'requires user' do
-    expect do
-      get :show
-    end.to raise_error(Authentication::Unauthorized)
+    get :show
+    expect(response).not_to be_success
+    expect(response.status).to be 401
   end
 
   it 'finds token from header' do

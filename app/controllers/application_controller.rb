@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   include Authentication
   include ErrorHandling
 
+  rescue_from ActiveRecord::RecordNotFound, with: :default_not_found
+  rescue_from Authentication::Unauthorized, with: :default_unauthorized
+
   def default_format_json
     request.format = 'json'
   end
