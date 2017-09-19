@@ -11,7 +11,7 @@ AllCops:
     - 'bin/*'
     - 'db/setup'
     - 'db/schema.rb'
-    - 'vendor/*'
+    - 'vendor/**/*'
 
 Layout/FirstParameterIndentation:
   EnforcedStyle: consistent
