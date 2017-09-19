@@ -5,6 +5,8 @@ services:
   - postgresql
 notifications:
   email: false
+before_script:
+  - bin/rails db:create
 script:
   - bin/rspec
   - bin/rubocop
