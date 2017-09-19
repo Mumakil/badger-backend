@@ -17,7 +17,7 @@ RSpec.describe AuthService, type: :model do
       }
     end
     let(:user) { User.create!(user_data) }
-    let(:token) { Token.new(user: user)}
+    let(:token) { Token.new(user: user) }
 
     it 'runs successfully' do
       expect(authenticator).to receive(:call).with(access_token).and_return(user_data)
