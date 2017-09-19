@@ -17,8 +17,7 @@ RSpec.describe Authentication, type: :controller do
 
   it 'requires user' do
     get :show
-    expect(response).not_to be_success
-    expect(response.status).to be 401
+    expect(response).to have_http_status :unauthorized
   end
 
   it 'finds token from header' do
