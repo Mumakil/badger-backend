@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'creates valid users with factory' do
-      expect(build(:user)).to be_valid
+      expect(FactoryGirl.build(:user)).to be_valid
     end
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Token, type: :model do
   describe 'encoding and decoding' do
-    let(:user) { create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
     let(:token) { Token.new(user: user) }
 
     it 'encodes into jwt and decodes' do

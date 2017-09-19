@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe AuthService::UserCreator, type: :model do
   describe 'running' do
-    let(:fbid) { generate(:fbid) }
-    let(:avatar_url) { generate(:avatar_url) }
-    let(:user_data) { {
-      fbid: fbid, name:
-      generate(:user_name),
-      avatar_url: avatar_url
-    } }
+    let(:fbid) { FactoryGirl.generate(:fbid) }
+    let(:avatar_url) { FactoryGirl.generate(:avatar_url) }
+    let(:user_data) do
+      {
+        fbid: fbid, name:
+        FactoryGirl.generate(:user_name),
+        avatar_url: avatar_url
+      }
+    end
 
     it 'creates user if it does not exist' do
       expect do

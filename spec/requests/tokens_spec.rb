@@ -5,8 +5,8 @@ RSpec.describe 'token creation', type: :request do
   let(:access_token) { SecureRandom.urlsafe_base64 }
   let(:user_data) do
     {
-      'id' => generate(:fbid),
-      'name' => generate(:user_name)
+      'id' => FactoryGirl.generate(:fbid),
+      'name' => FactoryGirl.generate(:user_name)
     }
   end
 
