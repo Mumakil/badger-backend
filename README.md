@@ -1,5 +1,7 @@
 # BADGER! backend
 
+[![Build Status](https://travis-ci.org/Mumakil/badger-backend.svg?branch=master)](https://travis-ci.org/Mumakil/badger-backend)
+
 This is the backend for BADGER! mobile app. Badger allows you to create groups, create badges within those groups and grant them to other members.
 
 ## Dependencies
@@ -12,13 +14,21 @@ This is the backend for BADGER! mobile app. Badger allows you to create groups, 
 
 - Launch server: `bin/rails s`
 - Launch console: `bin/rails c`
-- Run tests: `rspec`
+- Run tests: `bin/rspec`
+- Run rubocop linters: `bin/rubocop`
 
 ## API
 
+### Authentication
+
+Backend authentication is based on JWT tokens. See `Token` for how to create a token. To access endpoints that require authentication, you must supply an access token in one of two ways:
+
+- `Authorization` HTTP header using the format `Bearer MY_TOKEN`. This is the preferred way.
+- `access_token` parameter in the URL. Example `?access_token=MY_TOKEN`
+
 ### Tokens
 
-Authentication is based on JWT tokens. Facebook access tokenscan be exchanged to actual application access tokens.
+Facebook access tokens can be exchanged to actual application access tokens.
 
 The JWT tokens are encrypted using RSA keys and `RS512` algorithm.
 
