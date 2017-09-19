@@ -3,6 +3,10 @@ module Authentication
 
   class Unauthorized < StandardError; end
 
+  included do
+    helper_method :current_user
+  end
+
   def require_user
     raise Unauthorized, 'Invalid or missing access token' if current_user.nil?
   end
