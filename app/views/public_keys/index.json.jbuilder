@@ -1,1 +1,1 @@
-json.array! @tokens
+json.array! @public_keys
