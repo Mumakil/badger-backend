@@ -39,3 +39,10 @@ Style/Documentation:
 
 Style/IfUnlessModifier:
   Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/LambdaCall:
+  Exclude:
+    - 'app/views/**/*.jbuilder'
