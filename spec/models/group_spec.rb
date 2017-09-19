@@ -16,4 +16,17 @@ RSpec.describe Group, type: :model do
       expect(FactoryGirl.build(:group)).to be_valid
     end
   end
+
+  describe 'code creation' do
+    it 'creates a code when initializing group' do
+      subject = Group.new
+      code = subject.code
+      expect(code).to be_a(String)
+      expect(code.length).to be Group::CODE_LENGTH
+    end
+    it 'does not change code when reloading' do
+      subject = FactoryGirl.create(:group)
+      expect(subject.code).to eql(subject.reload.code)
+    end
+  end
 end
