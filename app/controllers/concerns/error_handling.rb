@@ -6,11 +6,10 @@ module ErrorHandling
   end
 
   def default_not_found(e)
-    Rails.logger.warn('Default not found handler:', e)
-    render_error('Not found', 404)
+    render_error(e, :not_found)
   end
 
   def default_unauthorized(e)
-    render_error(e, 401)
+    render_error(e, :unauthorized)
   end
 end
