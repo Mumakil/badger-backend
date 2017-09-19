@@ -18,6 +18,5 @@ class AuthService
     rescue FacebookAPI::ConnectionError => e
       raise ::AuthService::AuthenticationFailed, e
     end
-
   end
 end

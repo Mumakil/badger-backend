@@ -25,7 +25,7 @@ module Authentication
         Token.decode(token_str)
       end
     rescue Token::InvalidToken => e
-      nil
+      Rails.logger.info('Invalid authentication token', e)
     end
   end
 
