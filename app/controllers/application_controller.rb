@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :default_format_json
 
   include Authentication
-
-  def render_error(result)
-    render json: { error: result.error }, status: (result.status_hint || 500)
-  end
+  include ErrorHandling
 
   def default_format_json
     request.format = 'json'
