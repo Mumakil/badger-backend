@@ -36,13 +36,13 @@ RSpec.describe Group, type: :model do
     subject { FactoryGirl.create(:group, creator: creator) }
 
     it 'adds creator as member' do
-      expect(subject.users.include?(creator)).to be true
+      expect(subject.members.include?(creator)).to be true
     end
 
     it 'does not add same person twice' do
-      expect(subject.users.size).to be 1
+      expect(subject.members.size).to be 1
       expect do
-        subject.users << subject.users.first
+        subject.members << subject.members.first
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end

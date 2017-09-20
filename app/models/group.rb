@@ -10,7 +10,7 @@ class Group < ApplicationRecord
 
   belongs_to :creator, class_name: 'User'
   has_many :memberships, dependent: :destroy, inverse_of: :group
-  has_many :users, through: :memberships
+  has_many :members, through: :memberships, class_name: 'User', source: :user
 
   after_initialize do |group|
     group.code = Code.generate(CODE_LENGTH) if group.code.blank?
@@ -19,6 +19,6 @@ class Group < ApplicationRecord
   after_create :add_creator_to_members
 
   def add_creator_to_members
-    users << creator
+    members << creator
   end
 end
