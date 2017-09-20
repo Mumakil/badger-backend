@@ -12,4 +12,8 @@ module ErrorHandling
   def default_unauthorized(e)
     render_error(e, :unauthorized)
   end
+
+  def default_invalid(e)
+    render_error(e, :bad_request)
+  end
 end
