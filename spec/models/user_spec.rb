@@ -16,8 +16,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'groups' do
-    let(:groups) { FactoryGirl.create_list(:group, 2)}
-    subject { FactoryGirl.create(:user, groups: groups )}
+    let(:groups) { FactoryGirl.create_list(:group, 2) }
+    subject { FactoryGirl.create(:user, groups: groups) }
 
     it "lists user's groups" do
       expect(subject.groups.size).to be groups.size
