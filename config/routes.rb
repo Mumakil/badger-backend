@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     # resources :memberships, only: [:index, :create, :destroy]
   end
-  # resources :groups, only: [:create, :update, :show] do
-  #   resource :code, only: [:update, :show]
-  # end
+  resources :groups, only: [:create, :update, :show] do
+    # resource :code, only: [:update, :show]
+  end
 
   root to: 'static#index'
 end
