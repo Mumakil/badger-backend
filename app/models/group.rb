@@ -13,10 +13,14 @@ class Group < ApplicationRecord
   has_many :members, through: :memberships, class_name: 'User', source: :user
 
   after_initialize do |group|
-    group.code = Code.generate(CODE_LENGTH) if group.code.blank?
+    group.generate_code! if group.code.blank?
   end
 
   after_create :add_creator_to_members
+
+  def generate_code!
+    self.code = Code.generate(CODE_LENGTH)
+  end
 
   def add_creator_to_members
     members << creator

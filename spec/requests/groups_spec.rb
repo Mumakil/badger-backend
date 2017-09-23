@@ -28,6 +28,7 @@ RSpec.describe 'group endpoints', type: :request do
           id: group.id,
           name: group.name,
           photo_url: group.photo_url,
+          code: group.code,
           creator: {
             id: group.creator.id,
             name: group.creator.name,
