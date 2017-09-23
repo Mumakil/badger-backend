@@ -137,6 +137,14 @@ Params:
 
 Reply: same as show action except members.
 
+### Group codes
+
+#### `PUT /groups/:group_id/code`
+
+Regenerates the group code.
+
+Reply: same as show action.
+
 ## License
 
 MIT © 2017 Otto Vehviläinen. See LICENSE for details.
