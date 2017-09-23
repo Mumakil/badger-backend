@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     # resources :memberships, only: [:index, :create, :destroy]
   end
   resources :groups, only: [:create, :update, :show] do
-    # resource :code, only: [:update, :show]
+    resource :code, only: [:update]
   end
 
   root to: 'static#index'
