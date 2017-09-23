@@ -100,6 +100,7 @@ Reply:
   "id": 1,
   "name": "Example group of awesomeness",
   "photo_url": "https://example.com/photo.jpg",
+  "code": "abcd123",
   "creator": {
     "id": 1,
     "name": "Some user",
@@ -141,7 +142,7 @@ Reply: same as show action except members.
 
 #### `PUT /groups/:group_id/code`
 
-Regenerates the group code.
+Regenerates the group code. The user must be member of the group.
 
 Reply: same as show action.
 
