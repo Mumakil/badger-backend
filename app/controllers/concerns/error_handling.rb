@@ -5,6 +5,10 @@ module ErrorHandling
     render json: { error: message }, status: status
   end
 
+  def default_forbidden(e)
+    render_error(e, :not_found)
+  end
+
   def default_not_found(e)
     render_error(e, :not_found)
   end
