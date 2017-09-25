@@ -105,15 +105,30 @@ Reply:
     "id": 1,
     "name": "Some user",
     "avatar_url": "https://example.com/avatar.jpg"
-  },
-  "members": [
-    {
+  }
+}
+```
+
+#### `GET /users/:user_id/groups`
+
+List groups for the user. A special `me` user id can be used to show the viewer's groups. Only the viewer's groups can be listed.
+
+Reply:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Example group of awesomeness",
+    "photo_url": "https://example.com/photo.jpg",
+    "code": "abcd123",
+    "creator": {
       "id": 1,
       "name": "Some user",
       "avatar_url": "https://example.com/avatar.jpg"
     }
-  ]
-}
+  }
+]
 ```
 
 #### `POST /groups`

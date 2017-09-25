@@ -33,14 +33,7 @@ RSpec.describe 'group endpoints', type: :request do
             id: group.creator.id,
             name: group.creator.name,
             avatar_url: group.creator.avatar_url
-          },
-          members: [
-            {
-              id: group.creator.id,
-              name: group.creator.name,
-              avatar_url: group.creator.avatar_url
-            }
-          ]
+          }
         )
       end
 
@@ -117,15 +110,37 @@ RSpec.describe 'group endpoints', type: :request do
           avatar_url: current_user.avatar_url
         )
       end
+    end
 
-      it 'adds the user as member' do
-        post '/groups', params: valid_params
-        expect(json_response[:members].size).to be 1
-        expect(json_response[:members].first.symbolize_keys).to eql(
-          id: current_user.id,
-          name: current_user.name,
-          avatar_url: current_user.avatar_url
-        )
+    describe '#index' do
+      let(:current_user) { FactoryGirl.create(:user) }
+      let(:other_user) { FactoryGirl.create(:user) }
+      let(:groups) { FactoryGirl.create_list(:group, 3) }
+
+      before :each do
+        login_user(current_user)
+        groups.each do |g|
+          g.members << current_user
+          g.members << other_user
+        end
+      end
+
+      it "shows current user's groups" do
+        get "/users/#{current_user.id}/groups"
+        expect(response).to be_success
+        expect(json_response.length).to equal current_user.groups.size
+      end
+
+      it 'rewrites me to userid' do
+        get "/users/#{current_user.id}/groups"
+        expect(response).to be_success
+        expect(json_response.length).to equal current_user.groups.size
+      end
+
+      it "does not allow other's groups to be listed" do
+        get "/users/#{other_user.id}/groups"
+        expect(response).to have_http_status 404
+        expect(json_response).not_to have_key :id
       end
     end
   end

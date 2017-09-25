@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :tokens, only: [:create]
   resources :public_keys, only: [:index]
   resources :users, only: [:show] do
-    # resources :memberships, only: [:index, :create, :destroy]
+    resources :groups, only: [:index]
   end
   resources :groups, only: [:create, :update, :show] do
     resource :code, only: [:update]
