@@ -3,6 +3,8 @@ module ApiSpecHelpers
     parsed = MultiJson.load(response.body)
     if parsed.respond_to?(:with_indifferent_access)
       parsed.with_indifferent_access
+    elsif parsed.respond_to?(:map) && parsed.first.respond_to?(:with_indifferent_access)
+      parsed.map(&:with_indifferent_access)
     else
       parsed
     end

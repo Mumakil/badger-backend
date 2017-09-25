@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
   resources :groups, only: [:create, :update, :show] do
     resource :code, only: [:update]
+    resources :members, only: [:index, :destroy]
   end
+  resources :memberships, only: [:create], controller: :members
 
   root to: 'static#index'
 end
