@@ -5,6 +5,5 @@ class CodesController < ApplicationController
     @group = current_user.groups.find(params[:group_id])
     @group.generate_code!
     @group.save!
-    render 'groups/show'
   end
 end

@@ -25,14 +25,14 @@ RSpec.describe 'code endpoints', type: :request do
         old_code = group.code
         put "/groups/#{group.id}/code"
         expect(response).to be_success
-        expect(json_response).to have_key :id
+        expect(json_response).to have_key :code
         expect(json_response[:code]).not_to eql old_code
       end
 
       it 'does not update someone elses group' do
         put "/groups/#{other_group.id}/code"
         expect(response).to have_http_status :not_found
-        expect(json_response).not_to have_key :id
+        expect(json_response).not_to have_key :code
       end
     end
   end

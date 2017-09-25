@@ -144,7 +144,13 @@ Reply: same as show action except members.
 
 Regenerates the group code. The user must be member of the group.
 
-Reply: same as show action.
+Reply:
+
+```json
+{
+  "code": "abcd123"
+}
+```
 
 ## License
 
