@@ -167,6 +167,62 @@ Reply:
 }
 ```
 
+### Group members
+
+#### `POST /memberships`
+
+Joins a group.
+
+Params:
+
+- `code` - a code for a group.
+
+Reply:
+
+```json
+{
+  "group": {
+    "id": 1,
+    "name": "Example group of awesomeness",
+    "photo_url": "https://example.com/photo.jpg",
+    "code": "abcd123",
+    "creator": {
+      "id": 1,
+      "name": "Some user",
+      "avatar_url": "https://example.com/avatar.jpg"
+    }
+  }
+}
+```
+
+#### `GET /groups/:group_id/members`
+
+Lists group members. Current user must be part of the group.
+
+Reply:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Some user",
+    "avatar_url": "https://example.com/avatar.jpg"
+  }
+]
+```
+
+#### `DELETE /groups/:group_id/members/:user_id`
+
+Removes a user from the group. Users can only remove themselves at the moment.
+
+Reply:
+
+```json
+{
+  "ok": true
+}
+```
+
 ## License
 
 MIT © 2017 Otto Vehviläinen. See LICENSE for details.
