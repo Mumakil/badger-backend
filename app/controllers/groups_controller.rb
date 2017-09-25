@@ -20,9 +20,8 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:user_id])
-    authorize!(@user, :index)
-    @groups = @user.groups
+    authorize!(user, :index)
+    @groups = user.groups.includes(:creator)
   end
 
   private
@@ -39,10 +38,18 @@ class GroupsController < ApplicationController
     params[:user_id] = current_user.id if params[:user_id] == 'me'
   end
 
-  def authorize!(model, action)
+  def authorize!(user, action)
     case action
     when :index
-      raise Forbidden, 'Record not found' unless model == current_user
+      raise Forbidden, 'Record not found' unless user == current_user
+    else
+      raise 'Unknown action'
+    end
+  end
+
+  def user
+    @user ||= begin
+      User.find(params[:user_id])
     end
   end
 end
