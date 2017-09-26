@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :memberships, only: [:create], controller: :members
 
   root to: 'static#index'
+
+  match '/', to: 'application#no_route_found', via: [:post, :patch, :put, :delete]
+  match '*path', to: 'application#no_route_found', via: :all
 end

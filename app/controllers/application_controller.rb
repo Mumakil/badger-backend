@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   def default_format_json
     request.format = 'json'
   end
+
+  def no_route_found
+    render_error('Resource not found', 404)
+  end
 end
