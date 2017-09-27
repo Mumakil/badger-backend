@@ -1,7 +1,7 @@
 require 'jwt'
 
 class Token
-  class InvalidToken < RuntimeError; end
+  class InvalidToken < ApplicationError; end
 
   class_attribute :rsa_key
 

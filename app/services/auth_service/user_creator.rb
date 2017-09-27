@@ -12,6 +12,8 @@ class AuthService
         user.update_attributes!(user_data.slice(:name, :avatar_url))
       end
       user
+    rescue ActiveRecord::RecordInvalid => e
+      raise ::AuthService::AuthenticationFailed, e
     end
   end
 end

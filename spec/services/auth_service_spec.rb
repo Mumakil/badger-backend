@@ -24,7 +24,6 @@ RSpec.describe AuthService, type: :model do
       expect(user_creator).to receive(:call).with(user_data).and_return(user)
       expect(token_creator).to receive(:call).with(user).and_return(token)
       result = subject.call(access_token: access_token)
-      expect(result.success).to be(true)
       expect(result.token).to be(token)
     end
 
@@ -32,10 +31,9 @@ RSpec.describe AuthService, type: :model do
       expect(authenticator).to receive(:call).with(access_token) do
         raise AuthService::AuthenticationFailed, 'wrong credentials'
       end
-      result = subject.call(access_token: access_token)
-      expect(result.success).to be(false)
-      expect(result.error).to be_a(AuthService::AuthenticationFailed)
-      expect(result.status_hint).to be(400)
+      expect do
+        subject.call(access_token: access_token)
+      end.to raise_error(AuthService::AuthenticationFailed)
     end
   end
 end

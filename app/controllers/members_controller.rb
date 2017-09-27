@@ -44,7 +44,7 @@ class MembersController < ApplicationController
   def authorize!(membership, action)
     case action
     when :destroy
-      raise Unauthorized, 'User not found' unless membership.user_id == current_user.id
+      raise ApplicationError::Forbidden, 'User not found' unless membership.user_id == current_user.id
     else
       raise 'Unknown action'
     end

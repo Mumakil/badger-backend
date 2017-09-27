@@ -1,14 +1,14 @@
 module Authentication
   extend ActiveSupport::Concern
 
-  class Unauthorized < StandardError; end
+  class InvalidAuthentication < ApplicationError; end
 
   included do
     helper_method :current_user
   end
 
   def require_user
-    raise Unauthorized, 'Invalid or missing access token' if current_user.nil?
+    raise ApplicationError::Unauthorized, 'Invalid or missing access token' if current_user.nil?
   end
 
   def current_user
@@ -27,7 +27,7 @@ module Authentication
         Token.decode(token_str)
       end
     rescue Token::InvalidToken => e
-      Rails.logger.info('Invalid authentication token', e)
+      raise InvalidAuthentication, e
     end
   end
 

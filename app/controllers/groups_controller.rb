@@ -41,7 +41,7 @@ class GroupsController < ApplicationController
   def authorize!(user, action)
     case action
     when :index
-      raise Forbidden, 'Record not found' unless user == current_user
+      raise ApplicationError::Forbidden, 'Record not found' unless user == current_user
     else
       raise 'Unknown action'
     end
